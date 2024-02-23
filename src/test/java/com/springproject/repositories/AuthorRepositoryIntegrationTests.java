@@ -3,18 +3,15 @@ package com.springproject.repositories;
 import com.springproject.TestDataUtil;
 import com.springproject.domain.entities.AuthorEntity;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
-@ExtendWith(SpringExtension.class)
+@DataJpaTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class AuthorRepositoryIntegrationTests {
 
@@ -72,31 +69,4 @@ public class AuthorRepositoryIntegrationTests {
         Optional<AuthorEntity> result = underTest.findById(authorEntity.getId());
         assertThat(result).isEmpty();
     }
-
-    /*@Test
-    public void testThatGetAuthorsWithAgeLessThen(){
-        AuthorEntity authorEntityA = TestDataUtil.createTestAuthorA();
-        underTest.save(authorEntityA);
-        AuthorEntity authorEntityB = TestDataUtil.createTestAuthorB();
-        underTest.save(authorEntityB);
-        AuthorEntity authorEntityC = TestDataUtil.createTestAuthorC();
-        underTest.save(authorEntityC);
-
-        Iterable<AuthorEntity> result = underTest.ageLessThan(50);
-        assertThat(result).containsExactly(authorEntityA);
-    }*/
-
-    /*@Test
-    public void testThatGetAuthorsWithAgeGreaterThen(){
-        AuthorEntity authorEntityA = TestDataUtil.createTestAuthorA();
-        underTest.save(authorEntityA);
-        AuthorEntity authorEntityB = TestDataUtil.createTestAuthorB();
-        underTest.save(authorEntityB);
-        AuthorEntity authorEntityC = TestDataUtil.createTestAuthorC();
-        underTest.save(authorEntityC);
-
-        Iterable<AuthorEntity> result = underTest.findAuthorsWithAgeGreaterThan(50);
-
-        assertThat(result).containsExactly(authorEntityB, authorEntityC);
-    }*/
 }

@@ -17,7 +17,8 @@ import lombok.NoArgsConstructor;
 public class AuthorEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_id_seq")
+    @SequenceGenerator(name = "hibernate_seq", sequenceName = "hibernate_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_seq")
     private Long id;
 
     private String name;
@@ -27,5 +28,3 @@ public class AuthorEntity {
 }
 
 
-//    @SequenceGenerator(name = "hibernate_seq", sequenceName = "hibernate_id_seq", allocationSize = 1)
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_seq")

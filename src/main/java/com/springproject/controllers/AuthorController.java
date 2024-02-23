@@ -11,15 +11,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @Log
 public class AuthorController {
 
-    private AuthorService authorService;
+    private final AuthorService authorService;
 
     private Mapper<AuthorEntity, AuthorDto> authorMapper;
 
